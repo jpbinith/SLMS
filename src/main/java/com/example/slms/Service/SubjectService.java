@@ -10,7 +10,7 @@ public interface SubjectService {
 
     public void createSubject(Subject subject);
     public List<Subject> getAllSubjects();
-    public Subject getSubject(int id);
+    public Subject getSubject(long id);
     public void updateSubject(int id, Subject subject);
-    public void deleteSubject(int id);
+    public void deleteSubject(long id);
 }

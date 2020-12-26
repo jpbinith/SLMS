@@ -14,7 +14,7 @@ public class Subject {
     @Id
     @GeneratedValue( strategy =  GenerationType.AUTO)
     @Column( name = "Subject_ID" )
-    private int subjectID;
+    private long subjectID;
 
     @Column( name = "Subject_Name" )
     private String subjectName;
@@ -29,11 +29,11 @@ public class Subject {
     @OneToMany( mappedBy = "subject")
     private List<Student> studentList;
 
-    public int getSubjectID() {
+    public long getSubjectID() {
         return subjectID;
     }
 
-    public void setSubjectID(int subjectID) {
+    public void setSubjectID(long subjectID) {
         this.subjectID = subjectID;
     }
 

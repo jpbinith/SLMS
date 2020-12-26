@@ -29,7 +29,7 @@ public class SubjectServiceImp implements SubjectService {
         subjectRepo.save(subject);
     }
 
-    public Subject getSubject(int id){
+    public Subject getSubject(long id){
         Optional<Subject> subjectOptional = subjectRepo.findById(id);
         if (subjectOptional.isPresent()){
             return subjectOptional.get();
@@ -42,7 +42,7 @@ public class SubjectServiceImp implements SubjectService {
         subjectRepo.save(subject);
     }
 
-    public void deleteSubject(int id){
+    public void deleteSubject(long id){
         subjectRepo.deleteById(id);
     }
 

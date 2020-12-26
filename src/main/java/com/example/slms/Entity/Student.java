@@ -13,7 +13,7 @@ public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "Student_ID")
-    private int studentID;
+    private long studentID;
 
     @Column(name = "Firstname")
     private String firstName;
@@ -28,15 +28,15 @@ public class Student {
     @Column(name = "Grade")
     private String grade;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "Subject_ID")
     private Subject subject;
 
-    public int getStudentID() {
+    public long getStudentID() {
         return studentID;
     }
 
-    public void setStudentID(int studentID) {
+    public void setStudentID(long studentID) {
         this.studentID = studentID;
     }
 

@@ -16,20 +16,25 @@ public class SubjectController {
     public void createSubject(@RequestBody Subject subject) {
         subjectService.createSubject(subject);
     }
+
     @RequestMapping( value = "/subjects", method = RequestMethod.GET)
     public List<Subject> getAllSubjects() {
         return subjectService.getAllSubjects();
     }
+
     @RequestMapping( value = "/subjects/{id}", method = RequestMethod.GET)
-    public Subject getSubject(@PathVariable int id) {
+    public Subject getSubject(@PathVariable long id) {
         return subjectService.getSubject(id);
     }
+
     @RequestMapping( value = "/subjects/{id}", method = RequestMethod.PUT)
     public void updateSubject(@PathVariable int id, @RequestBody Subject subject) {
         subjectService.updateSubject(id, subject);
     }
+
     @RequestMapping( value = "/subjects/{id}", method = RequestMethod.DELETE)
-    public void deleteSubject(@PathVariable int id) {
+    public void deleteSubject(@PathVariable long id) {
         subjectService.deleteSubject(id);
     }
+
 }

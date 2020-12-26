@@ -5,9 +5,10 @@ import java.util.List;
 
 public interface StudentService {
 
-    public void createStudent(Student student);
-    public List<Student> getAllStudents();
-    public Student getStudent(int id);
-    public void updateStudent(int id, Student student);
-    public void deleteStudent(int id);
+    void createStudent(Student student);
+    List<Student> getAllStudents();
+    Student getStudent(long id);
+    void updateStudent(int id, Student student);
+    void deleteStudent(long id);
+    void updateStudentSubject(long stuId, long subId);
 }
