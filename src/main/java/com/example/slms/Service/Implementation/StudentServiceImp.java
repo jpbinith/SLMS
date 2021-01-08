@@ -25,8 +25,14 @@ public class StudentServiceImp implements StudentService {
     public List<Student> getAllStudents(){
 //        List<Student> students = new ArrayList<>();
 //        studentRepo.findAll().forEach(students::add);
+//        return students;
         return studentRepo.findAll();
     }
+//    public List<Student> getAllStudents(){
+//        List<Student> students = new ArrayList<>();
+//        studentRepo.findAll().forEach(students::add);
+//        return students;
+//    }
 
     public void createStudent(Student student){
         studentRepo.save(student);
@@ -42,8 +48,11 @@ public class StudentServiceImp implements StudentService {
         }
     }
 
-    public void updateStudent(int id, Student student){
-        studentRepo.save(student);
+    public void updateStudent(long id, Student student){
+        Optional<Student> studentOptional = studentRepo.findById(id);
+        if(studentOptional.isPresent()){
+            studentRepo.save(student);
+        }
     }
 
     public void deleteStudent(long id){

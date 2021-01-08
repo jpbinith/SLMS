@@ -19,19 +19,22 @@ public class StudentController {
     public List<Student> getAllStudent(){
         return studentService.getAllStudents();
     }
+
     @RequestMapping( value = "/students/{id}", method = RequestMethod.GET)
     public Student getStudent(@PathVariable long id){
         return studentService.getStudent(id);
     }
+
     @RequestMapping( value = "/students", method = RequestMethod.POST)
     public void createStudent(@RequestBody Student student){
         studentService.createStudent(student);
     }
 
     @RequestMapping( value = "/students/{id}", method = RequestMethod.PUT)
-    public void updateStudent(@RequestBody Student student, @PathVariable int id){
+    public void updateStudent(@RequestBody Student student, @PathVariable long id){
         studentService.updateStudent(id, student);
     }
+
     @RequestMapping( value = "/students/{stu_id}/subjects/{sub_id}", method = RequestMethod.PUT)
     public void updateStudentSubject(@PathVariable( name = "stu_id" ) long stuId,
                                      @PathVariable( name = "sub_id" ) long subId){

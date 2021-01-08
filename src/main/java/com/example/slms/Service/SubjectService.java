@@ -1,16 +1,13 @@
 package com.example.slms.Service;
 
-import com.example.slms.Entity.Student;
 import com.example.slms.Entity.Subject;
-
 import java.util.List;
-import java.util.Optional;
 
 public interface SubjectService {
 
-    public void createSubject(Subject subject);
-    public List<Subject> getAllSubjects();
-    public Subject getSubject(long id);
-    public void updateSubject(int id, Subject subject);
-    public void deleteSubject(long id);
+    void createSubject(Subject subject);
+    List<Subject> getAllSubjects();
+    Subject getSubject(long id);
+    void updateSubject(long id, Subject subject);
+    void deleteSubject(long id);
 }

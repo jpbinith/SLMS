@@ -1,10 +1,7 @@
 package com.example.slms.Service.Implementation;
 
-import com.example.slms.Entity.Student;
 import com.example.slms.Entity.Subject;
-import com.example.slms.Repository.StudentRepository;
 import com.example.slms.Repository.SubjectRepository;
-import com.example.slms.Service.StudentService;
 import com.example.slms.Service.SubjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -38,8 +35,24 @@ public class SubjectServiceImp implements SubjectService {
         }
     }
 
-    public void updateSubject(int id, Subject subject){
-        subjectRepo.save(subject);
+    public void updateSubject(long id, Subject subject){
+        Optional<Subject> subjectOptional = subjectRepo.findById(id);
+        if(subjectOptional.isPresent()){
+//            subjectOptional.get();
+            if(!subject.getSubjectName().isEmpty()){
+                subjectOptional.get().setSubjectName(subject.getSubjectName());
+            }
+            if(subject.getCreditValue() != subjectOptional.get().getCreditValue() && subject.getCreditValue() != 0.0){
+                subjectOptional.get().setCreditValue(subject.getCreditValue());
+            }
+            if(subject.getSubjectCategory() != subjectOptional.get().getSubjectCategory() && subject.getSubjectCategory() != null){
+                subjectOptional.get().setSubjectCategory(subject.getSubjectCategory());
+            }
+//            if(subject.getSubjectID() != subjectOptional.get().getSubjectID() && subject.getSubjectID() != 0){
+//                subjectOptional.get().setSubjectID(subject.getSubjectID());
+//            }
+            subjectRepo.save(subjectOptional.get());
+        }
     }
 
     public void deleteSubject(long id){

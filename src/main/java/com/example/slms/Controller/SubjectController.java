@@ -28,7 +28,7 @@ public class SubjectController {
     }
 
     @RequestMapping( value = "/subjects/{id}", method = RequestMethod.PUT)
-    public void updateSubject(@PathVariable int id, @RequestBody Subject subject) {
+    public void updateSubject(@PathVariable long id, @RequestBody Subject subject) {
         subjectService.updateSubject(id, subject);
     }
 
