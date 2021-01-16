@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @JsonNaming( value = PropertyNamingStrategy.SnakeCaseStrategy.class)

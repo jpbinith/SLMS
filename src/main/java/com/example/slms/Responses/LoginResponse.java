@@ -1,6 +1,6 @@
 package com.example.slms.Responses;
 
-import com.example.slms.Entity.Login;
+import com.example.slms.Entity.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import java.time.LocalDateTime;
@@ -10,13 +10,7 @@ import java.time.LocalDateTime;
 public class LoginResponse {
     private String errorMessage;
     private boolean resultOk;
-    private Login login;
+    private User user;
     private LocalDateTime dateTime = LocalDateTime.now();
 
-//    public LoginResponse(String e, boolean b, Login o, LocalDateTime now) {
-//        this.errorMessage = e;
-//        this.resultOk = b;
-//        this.login = o;
-//        this.dateTime = now;
-//    }
 }
