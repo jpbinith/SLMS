@@ -84,7 +84,9 @@ public class Book {
     }
 
     public void setBorrowDate(Date borrowDate) {
-        this.borrowDate = borrowDate;
+        if (!borrowDate.equals(null)){
+            this.borrowDate = borrowDate;
+        }else this.borrowDate = java.util.Calendar.getInstance().getTime();
     }
 
     public Date getReturnDate() {
