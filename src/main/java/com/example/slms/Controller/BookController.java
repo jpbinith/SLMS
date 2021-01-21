@@ -2,6 +2,7 @@ package com.example.slms.Controller;
 
 import com.example.slms.Entity.Book;
 import com.example.slms.Entity.BookDetailsProjection;
+import com.example.slms.Entity.User;
 import com.example.slms.Service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -60,10 +61,10 @@ public class BookController {
     public ResponseEntity<Book> findByBookName(@PathVariable String bookName){
         return ResponseEntity.ok().body(bookService.findByBookName(bookName));
     }
-
-    @RequestMapping( value = "/available/{isAvailable}", method = RequestMethod.GET,
+//    /{isAvailable}
+    @RequestMapping( value = "/available", method = RequestMethod.GET,
             produces = { MediaType.APPLICATION_JSON_VALUE })
-    public List<Book> findAllAvailableBooks(@PathVariable(required = true) boolean isAvailable){
+    public List<Book> findAllAvailableBooks(@RequestParam(value = "isAvailable", required = true) boolean isAvailable){
         return bookService.findAllAvailableBooks(isAvailable);
     }
 

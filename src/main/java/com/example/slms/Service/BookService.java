@@ -2,9 +2,7 @@ package com.example.slms.Service;
 
 import com.example.slms.Entity.Book;
 import com.example.slms.Entity.BookDetailsProjection;
-
 import java.util.List;
-import java.util.Optional;
 
 public interface BookService {
 

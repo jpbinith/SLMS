@@ -2,6 +2,7 @@ package com.example.slms.Service.Implementation;
 
 import com.example.slms.Entity.Book;
 import com.example.slms.Entity.BookDetailsProjection;
+import com.example.slms.Entity.User;
 import com.example.slms.Exceptions.CustomException;
 import com.example.slms.Repository.BookRepository;
 import com.example.slms.Service.BookService;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -55,8 +57,19 @@ public class BookServiceImp implements BookService {
         }else throw new CustomException(400, "Book not found");
     }
 
+    @Transactional
     public List<Book> findAllAvailableBooks(boolean isAvailable){
-        return bookRepository.findAllAvailableBooks(isAvailable);
+        List<Book> books = new ArrayList<>();
+        bookRepository.findAllAvailableBooks(isAvailable)
+                .forEach(book -> {
+                    User user = new User();
+                    user.setUsername(book.getBorrower().getUsername());
+                    user.setUserID(book.getBorrower().getUserID());
+                    user.setRole(book.getBorrower().getRole());
+                    book.setBorrower(user);
+                    books.add(book);
+                });
+        return books;
     }
 
     public boolean isAvailable(long id){

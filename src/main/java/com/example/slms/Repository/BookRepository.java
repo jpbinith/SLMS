@@ -2,7 +2,6 @@ package com.example.slms.Repository;
 
 import com.example.slms.Entity.Book;
 import com.example.slms.Entity.BookDetailsProjection;
-import com.example.slms.Entity.UserDetailsProjection;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -14,7 +13,8 @@ public interface BookRepository extends JpaRepository<Book, Long> {
 
     Optional<Book> findByBookName(String bookName);
 
-    @Query(value = "SELECT * FROM books WHERE Availability = :isAvailable", nativeQuery = true)
+    @Query(value = "SELECT b FROM Book b WHERE b.isAvailable = :isAvailable")
+//    @Query(value = "SELECT * FROM books AS b WHERE Availability = :isAvailable")
     List<Book> findAllAvailableBooks(@Param("isAvailable") boolean isAvailable);
 
     @Query(value = "SELECT * FROM books WHERE Category = :category", nativeQuery = true)
